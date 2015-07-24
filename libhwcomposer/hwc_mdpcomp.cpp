@@ -217,11 +217,12 @@ bool MDPComp::setupBasePipe(hwc_context_t *ctx) {
 }
 
 MDPComp::FrameInfo::FrameInfo() {
+    memset(this, 0, sizeof(*this));
     reset(0);
 }
 
 void MDPComp::FrameInfo::reset(const int& numLayers) {
-    for(int i = 0 ; i < MAX_PIPES_PER_MIXER && numLayers; i++ ) {
+    for(int i = 0 ; i < MAX_PIPES_PER_MIXER; i++ ) {
         if(mdpToLayer[i].pipeInfo) {
             delete mdpToLayer[i].pipeInfo;
             mdpToLayer[i].pipeInfo = NULL;
